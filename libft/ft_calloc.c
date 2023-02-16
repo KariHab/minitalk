@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 14:47:29 by khabbout          #+#    #+#             */
-/*   Updated: 2023/02/16 15:44:13 by khabbout         ###   ########.fr       */
+/*   Created: 2023/01/10 13:02:47 by khabbout          #+#    #+#             */
+/*   Updated: 2023/01/20 18:21:37 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*le fichier exe doit se normer client
-prend 2 param le PID et la chaine de str a envoyer 
-doit l'envoyer au server 
-get pid pour avoir le pid du client 
-kill() pour envoyer un signal au server
+#include "libft.h"
 
-Pseudocode:
-get the server pid
-send a char 
-*/
+/*allocate memory and initialize it to 0*/
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ptr;
 
+	ptr = malloc(count * size);
+	if (ptr == NULL)
+		return (ptr);
+	ft_bzero(ptr, count * size);
+	return (ptr);
+}

@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 14:47:29 by khabbout          #+#    #+#             */
-/*   Updated: 2023/02/16 15:44:13 by khabbout         ###   ########.fr       */
+/*   Created: 2023/01/06 13:59:24 by khabbout          #+#    #+#             */
+/*   Updated: 2023/01/20 18:20:08 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*le fichier exe doit se normer client
-prend 2 param le PID et la chaine de str a envoyer 
-doit l'envoyer au server 
-get pid pour avoir le pid du client 
-kill() pour envoyer un signal au server
+#include "libft.h"
 
-Pseudocode:
-get the server pid
-send a char 
-*/
+/*set char in a memory block for len bytes*/
+void	*ft_memset(void *b, int c, size_t len)
+{
+	size_t	i;
 
+	if (b == NULL)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		((unsigned char *)b)[i] = c;
+		i++;
+	}
+	return (b);
+}

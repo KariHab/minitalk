@@ -6,7 +6,7 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:37 by khabbout          #+#    #+#             */
-/*   Updated: 2023/02/16 15:04:56 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/02/16 15:15:40 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,10 @@ kill() envoi un signal a un process via son PID
 get pid pour avoir le pid du client 
 
 Pseudocode:
-
+affiche son pid
+recevoir un str
+printer la str
+get the pid du client
+envoi un signal pour confirmer la reception du signal 
+si reception d' un autre signal, pause celui en cours et traiter le signal en question
 */

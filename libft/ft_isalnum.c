@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 14:47:29 by khabbout          #+#    #+#             */
-/*   Updated: 2023/02/16 15:44:13 by khabbout         ###   ########.fr       */
+/*   Created: 2023/01/06 10:31:16 by khabbout          #+#    #+#             */
+/*   Updated: 2023/01/20 18:19:40 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*le fichier exe doit se normer client
-prend 2 param le PID et la chaine de str a envoyer 
-doit l'envoyer au server 
-get pid pour avoir le pid du client 
-kill() pour envoyer un signal au server
+#include "libft.h"
 
-Pseudocode:
-get the server pid
-send a char 
-*/
-
+int	ft_isalnum(int c)
+{
+	if ((c >= 'A' && c <= 'Z')
+		|| (c >= 'a' && c <= 'z')
+		|| (c >= '0' && c <= '9'))
+		return (c);
+	return (0);
+}

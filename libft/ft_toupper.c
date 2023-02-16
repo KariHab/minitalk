@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 14:47:29 by khabbout          #+#    #+#             */
-/*   Updated: 2023/02/16 15:44:13 by khabbout         ###   ########.fr       */
+/*   Created: 2023/01/06 10:31:55 by khabbout          #+#    #+#             */
+/*   Updated: 2023/01/20 18:21:17 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*le fichier exe doit se normer client
-prend 2 param le PID et la chaine de str a envoyer 
-doit l'envoyer au server 
-get pid pour avoir le pid du client 
-kill() pour envoyer un signal au server
+#include "libft.h"
 
-Pseudocode:
-get the server pid
-send a char 
-*/
-
+int	ft_toupper(int c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);
+}

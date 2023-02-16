@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 14:47:29 by khabbout          #+#    #+#             */
-/*   Updated: 2023/02/16 15:44:13 by khabbout         ###   ########.fr       */
+/*   Created: 2023/01/06 10:31:23 by khabbout          #+#    #+#             */
+/*   Updated: 2023/01/20 18:19:47 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*le fichier exe doit se normer client
-prend 2 param le PID et la chaine de str a envoyer 
-doit l'envoyer au server 
-get pid pour avoir le pid du client 
-kill() pour envoyer un signal au server
+#include "libft.h"
 
-Pseudocode:
-get the server pid
-send a char 
-*/
-
+int	ft_isascii(int c)
+{
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
+}
