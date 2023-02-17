@@ -6,7 +6,7 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:37 by khabbout          #+#    #+#             */
-/*   Updated: 2023/02/16 15:15:40 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/02/16 20:02:35 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,26 @@ recevoir un str
 printer la str
 get the pid du client
 envoi un signal pour confirmer la reception du signal 
-si reception d' un autre signal, pause celui en cours et traiter le signal en question
+si reception d'un autre signal, pause celui en cours et traiter le signal en question
 */
+
+
+#include "minitalk.h"
+
+
+static void signal_user(int signal_nb)
+{
+    if (signal_nb == SIGUSR1)
+        printf("SIGURS1 received\n");
+    else if (signal_nb == SIGUSR2)
+        printf("SIGUSR2 received\n");
+}
+
+
+int main(void)
+{
+    pid_t server_pid;
+    
+    printf("%d", server_pid = getpid());
+    signal(SIGUSR1, signal_user);
+}
