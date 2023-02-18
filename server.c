@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:37 by khabbout          #+#    #+#             */
-/*   Updated: 2023/02/17 21:16:29 by marvin           ###   ########.fr       */
+/*   Updated: 2023/02/18 10:01:05 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ si reception d'un autre signal, pause celui en cours et traiter le signal en que
 
 #include "minitalk.h"
 
+//handle the signal received from client - sig1
 void    ft_bintoa(int sig_num)
 {
     static int  bit;
@@ -54,7 +55,7 @@ int main(int ac, char **av)
     pid_t server_pid;
     
     server_pid = getpid();
-    ft_printf("%d\n", server_pid);
+    ft_printf("PID: %d\n", server_pid);
     while (ac == 1)
     {
         signal(SIGUSR1, ft_bintoa);
