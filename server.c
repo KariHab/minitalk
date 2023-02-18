@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:37 by khabbout          #+#    #+#             */
-/*   Updated: 2023/02/16 20:02:35 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/02/17 21:16:29 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,40 @@ si reception d'un autre signal, pause celui en cours et traiter le signal en que
 
 #include "minitalk.h"
 
-
-static void signal_user(int signal_nb)
+void    ft_bintoa(int sig_num)
 {
-    if (signal_nb == SIGUSR1)
-        printf("SIGURS1 received\n");
-    else if (signal_nb == SIGUSR2)
-        printf("SIGUSR2 received\n");
+    static int  bit;
+    static int index;
+    
+    if (sig_num == SIGUSR1)
+        index |=(0x01 << bit);
+    bit++;
+    if (bit == 8)
+    {
+        ft_printf("%c", index);
+        bit = 0; 
+        index = 0;
+    }
 }
 
 
-int main(void)
+
+int main(int ac, char **av)
 {
     pid_t server_pid;
     
-    printf("%d", server_pid = getpid());
-    signal(SIGUSR1, signal_user);
+    server_pid = getpid();
+    ft_printf("%d\n", server_pid);
+    while (ac == 1)
+    {
+        signal(SIGUSR1, ft_bintoa);
+        signal(SIGUSR2, ft_bintoa);
+        pause ();
+    }
+    if (ac != 1)
+    {
+        ft_printf("Error\n");
+        retunr (1);
+    }
+    return (0);
 }

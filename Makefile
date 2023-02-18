@@ -13,19 +13,16 @@ SRC = client.c\
 
 OBJS	=	$(SRCS:.c=.o)
 
-LIBFT = libft.a
-LDIR = libft/
-
+PRINTF = libftprintf.a
+PRINTF_DIR = ft_printf/
 # Pour obtenir les .o de chaque .c 
-$(NAME): $(OBJS) $(LDIR)$(LIBFT)
-	cp $(LDIR)$(LIBFT) $(NAME)
+$(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJS)
 
-all: $(LDIR)$(LIBFT) $(SERVER) $(CLIENT)
+all: $(SERVER) $(CLIENT)
 
 # pour make la libft
-$(LDIR)$(LIBFT):
-	$(MAKE) -C $(LDIR)
+
 
 $(SERVER) : 
 
@@ -35,12 +32,12 @@ $(CLIENT) :
 # Pour supprimer les .o qu' on a genere
 clean:
 	$(RM) $(OBJS)
-	$(RM) $(LDIR)*.o
+
 
 # on clean tout donc .o et les exe
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) $(LDIR)$(LIBFT)
+
 
 
 re: fclean all
