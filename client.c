@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:29 by khabbout          #+#    #+#             */
-/*   Updated: 2023/02/17 21:18:08 by marvin           ###   ########.fr       */
+/*   Updated: 2023/02/18 12:45:29 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ send a char
 // }
 
 /*convert a char to an int*/
-int ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int i;
-	int sign;
-	int result;
+	int	i;
+	int	sign;
+	int	result;
 
 	if (str == NULL)
 		return (0);
@@ -63,8 +63,8 @@ int ft_atoi(const char *str)
 /*convert a to binary*/
 void	ft_atobin(int pid, char c)
 {
-	int bit;
-	
+	int	bit;
+
 	bit = 0;
 	while (bit < 8)
 	{
@@ -72,14 +72,14 @@ void	ft_atobin(int pid, char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		bit++;
-			
+		bit++;	
 	}
 }
-int main(int ac, char **av)
+
+int	main(int ac, char **av)
 {
-	int server_pid;
-	int index;
+	int	server_pid;
+	int	index;
 
 	index = 0;
 	// faut nom du prog - pid - message donc ac 3
