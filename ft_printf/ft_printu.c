@@ -12,6 +12,32 @@
 
 #include "ft_printf.h"
 
+/*replace char to 0*/
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+
+	if (s == NULL)
+		return ;
+	i = 0;
+	while (i < n)
+	{
+		((char *)s)[i] = 0;
+		i++;
+	}
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ptr;
+
+	ptr = malloc(count * size);
+	if (ptr == NULL)
+		return (ptr);
+	ft_bzero(ptr, count * size);
+	return (ptr);
+}
+
 static int	get_size(unsigned long long n)
 {
 	int	size;

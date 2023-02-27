@@ -1,48 +1,55 @@
 # Librairy names
-NAME = 
-SERVER = server
-CLIENT = client 
-
-PRINTF = ./ft_printf/libftprintf.a
-PRINTF_DIR = ./ft_printf
+SERVER_NAME = server
+CLIENT_NAME = client
 
 
-SRC_C = client.c
-SRC_S = server.c
+SERVER_SRCS = server.c
+SERVER_OBJS = $(SERVER_SRCS:.c=.o)
+
+CLIENT_SRCS = client.c
+CLIENT_OBJS = $(CLIENT_SRCS:.c=.o)
+
+
+PRINTF_DIR = ft_printf/
+# PRINTF = $(PRINTF_DIR)/libftprintf.a
 
 
 #compiler && flags
 CC =  gcc 
 FLAGS = -Wall -Wextra -Werror 
 RM = rm -f 
-INCLUDE = -I include
+INCLUDES = -I$(PRINTF_DIR)
 
 
-$(NAME): all
 
-all: $(PRINTF_DIR) $(PRINTF) $(SERVER) $(CLIENT)
+all: $(SERVER_NAME) $(CLIENT_NAME)
 
-# pour make la libft
-$(PRINTF):
-		$(MAKE) -C $(PRINTF_DIR)
+
 
 #pour faire les compilations des mes server + clients
-$(SERVER): $(PRINTF)
-	@ $(CC) $(CFLAG) $(SRC_S) $(PRINTF) -o $(SERVER)
+$(CLIENT_NAME): $(CLIENT_OBJS)
+	$(CC) $(CFLAGS) $(INCLUDES) $(PRINTF_DIR)*.c $(CLIENT_OBJS) -o $(CLIENT_NAME)
 
-$(CLIENT): $(LIBFT)
-	@ $(CC) $(CFLAG) $(SRC_C) $(PRINTF) -o $(CLIENT)
+$(SERVER_NAME): $(SERVER_OBJS)
+	$(CC) $(CFLAGS) $(INCLUDES) $(PRINTF_DIR)*.c $(SERVER_OBJS) -o $(SERVER_NAME)
 
+
+#how to create a .o from a .o
+#The $< variable case is the source file (%.c). 
+#The $@ variable name of the target file (%.o).
+# %.o: %.c
+# 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	
 
 # Pour supprimer les .o qu' on a genere
 clean:
-	$(RM) $(CLIENT) $(SERVER)
-	$(RM) $(PRINTF_DIR)*.o
-
-
+	$(RM) $(SERVER_OBJS) $(CLIENT_OBJS)
+	$(RM) $(PRINTF_DIR)*.o 
+	
 # on clean tout donc .o et les exe
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(SERVER_NAME) $(CLIENT_NAME)
+	# $(RM) $(PRINTF_DIR)$(PRINTF)
 
 
 re: fclean all

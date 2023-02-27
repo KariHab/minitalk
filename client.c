@@ -6,21 +6,9 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:29 by khabbout          #+#    #+#             */
-/*   Updated: 2023/02/18 12:45:29 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/02/27 13:58:11 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*le fichier exe doit se normer client - SIGUSR1 pour le client 
-prend 2 param le PID et la chaine de str a envoyer
-doit l'envoyer au server
-get pid pour avoir le pid du client
-kill() pour envoyer un signal au server
-
-Pseudocode:
-get the server pid in arg
-send a char
-
-*/
 
 #include "minitalk.h"
 /*bonus part confirm message*/
@@ -72,7 +60,8 @@ void	ft_atobin(int pid, char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		bit++;	
+		usleep(500);
+		bit++;
 	}
 }
 
@@ -82,19 +71,14 @@ int	main(int ac, char **av)
 	int	index;
 
 	index = 0;
-	// faut nom du prog - pid - message donc ac 3
 	if (ac == 3)
 	{
-		// get the server pid converted in int with atoi()
 		server_pid = ft_atoi(av[1]);
 		while (av[2][index])
 		{
 			ft_atobin(server_pid, av[2][index]);
 			index++;
 		}
-		// //bonus 
-		// signal(SIGUSR2, got_it);
-		// ft_atobin(pid, '\0');
 	}
 	else
 	{
