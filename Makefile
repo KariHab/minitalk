@@ -9,9 +9,7 @@ SERVER_OBJS = $(SERVER_SRCS:.c=.o)
 CLIENT_SRCS = client.c
 CLIENT_OBJS = $(CLIENT_SRCS:.c=.o)
 
-
 PRINTF_DIR = ft_printf/
-# PRINTF = $(PRINTF_DIR)/libftprintf.a
 
 
 #compiler && flags
@@ -25,20 +23,12 @@ INCLUDES = -I$(PRINTF_DIR)
 all: $(SERVER_NAME) $(CLIENT_NAME)
 
 
-
 #pour faire les compilations des mes server + clients
 $(CLIENT_NAME): $(CLIENT_OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) $(PRINTF_DIR)*.c $(CLIENT_OBJS) -o $(CLIENT_NAME)
 
 $(SERVER_NAME): $(SERVER_OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) $(PRINTF_DIR)*.c $(SERVER_OBJS) -o $(SERVER_NAME)
-
-
-#how to create a .o from a .o
-#The $< variable case is the source file (%.c). 
-#The $@ variable name of the target file (%.o).
-# %.o: %.c
-# 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	
 
 # Pour supprimer les .o qu' on a genere
