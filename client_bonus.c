@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 14:47:29 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/02 14:53:49 by khabbout         ###   ########.fr       */
+/*   Created: 2023/03/02 14:53:37 by khabbout          #+#    #+#             */
+/*   Updated: 2023/03/02 15:14:56 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
+
+/*bonus part confirm message*/
+void	got_it(int signal)
+{
+	if (signal == SIGUSR2)
+		ft_printf("Message received!\n");	
+}
 
 /*convert a char to an int*/
 int	ft_atoi(const char *str)
@@ -19,7 +26,7 @@ int	ft_atoi(const char *str)
 	int	sign;
 	int	result;
 
-	if (str == NULL)
+	if (!str)
 		return (0);
 	i = 0;
 	sign = 1;
@@ -73,11 +80,13 @@ int	main(int ac, char **av)
 			ft_atobin(server_pid, av[2][index]);
 			index++;
 		}
-	}
-	else
+        signal(SIGUSR2, got_it);
+    }
+    else
 	{
 		ft_printf("Error\n");
 		return (1);
 	}
 	return (0);
 }
+
