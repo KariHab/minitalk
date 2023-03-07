@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:53:37 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/02 15:14:56 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:24:04 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	got_it(int signal)
 {
 	if (signal == SIGUSR2)
-		ft_printf("Message received!\n");	
+		ft_printf("Message received!\n");
 }
 
 /*convert a char to an int*/
@@ -80,13 +80,13 @@ int	main(int ac, char **av)
 			ft_atobin(server_pid, av[2][index]);
 			index++;
 		}
-        signal(SIGUSR2, got_it);
-    }
-    else
+		signal(SIGUSR2, got_it);
+		ft_atobin(server_pid, '\0');
+	}
+	else
 	{
 		ft_printf("Error\n");
 		return (1);
 	}
 	return (0);
 }
-

@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:54:53 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/02 15:07:30 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:27:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #	ifndef MINITALK_BONUS_H
 # define MINITALK_BONUS_H
@@ -18,9 +17,9 @@
 # include <stdlib.h>
 # include "ft_printf/ft_printf.h"
 
-void	ft_bintoa(int sig_num);
+void	ft_bintoa(int sig_num, siginfo_t *info, void *context);
 int		ft_atoi(const char *str);
 void	ft_atobin(int pid, char c);
-void    got_it(int signal);
+void	got_it(int signal);
 
 #endif

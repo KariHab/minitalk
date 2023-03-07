@@ -16,6 +16,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <stdint.h>
 # include <stdlib.h>
 
 int		ft_printf(const char *s, ...);
