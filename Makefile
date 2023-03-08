@@ -45,8 +45,8 @@ $(BONUS_NAMES) : $(BONUSS_OBJ)
 clean:
 	$(RM) $(SERVER_OBJS) $(CLIENT_OBJS)
 	$(RM) $(PRINTF_DIR)*.o 
-	$(RM) $(BONUS_OBJS)
-	$(RM) $(BONUS_OBJC)
+	$(RM) $(BONUSS_OBJ)
+	$(RM) $(BONUSC_OBJ)
 	
 # on clean tout donc .o et les exe
 fclean: clean
