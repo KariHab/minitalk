@@ -6,7 +6,7 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:29 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/02 14:53:49 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/08 16:22:25 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_atoi(const char *str)
 	return (result * sign);
 }
 
-/*convert a to binary*/
+
 void	ft_atobin(int pid, char c)
 {
 	int	bit;

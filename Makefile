@@ -51,7 +51,7 @@ clean:
 # on clean tout donc .o et les exe
 fclean: clean
 	$(RM) $(SERVER_NAME) $(CLIENT_NAME)
-	# $(RM) $(PRINTF_DIR)$(PRINTF) 
+#$(RM) $(PRINTF_DIR)$(PRINTF) 
 	$(RM) $(BONUS_NAMEC) $(BONUS_NAMES)
  
 
