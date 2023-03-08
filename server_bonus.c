@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:53:15 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/06 17:28:44 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/08 15:48:35 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-void	ft_bintoa(int sig_num, siginfo_t *info, void *context)
+void	ft_bintoa(int sig_num, siginfo_t *src, void *context)
 {
 	static int	bit;
 	static int	index;
 
 	(void)context;
-	(void)info;
+	(void)src;
 	if (sig_num == SIGUSR1)
 		index |= (0x01 << bit);
 	bit++;
 	if (bit == 8)
 	{
 		if (index == 0)
-			kill(info->si_pid, SIGUSR2);
+			kill(src->si_pid, SIGUSR2);
 		ft_printf("%c", index);
 		bit = 0;
 		index = 0;
@@ -45,8 +45,8 @@ int	main(int ac, char **av)
 	act.sa_flags = 0;
 	while (ac == 1)
 	{
-		signal(SIGUSR1, ft_bintoa);
-		signal(SIGUSR2, ft_bintoa);
+		sigaction(SIGUSR1, &act, NULL);
+		sigaction(SIGUSR2, &act, NULL);
 		pause();
 	}
 	if (ac != 1)
