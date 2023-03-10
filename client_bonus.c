@@ -6,7 +6,7 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:53:37 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/08 16:22:21 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:49:28 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	got_it(int signal)
 {
 	if (signal == SIGUSR2)
-		ft_printf("Message received!\n");
+		ft_printf("\033[1;32mSignal has been received and confirmed by server!\n");
 }
 
 /*convert a char to an int*/
@@ -49,7 +49,6 @@ int	ft_atoi(const char *str)
 	return (result * sign);
 }
 
-
 void	ft_atobin(int pid, char c)
 {
 	int	bit;
@@ -81,7 +80,7 @@ int	main(int ac, char **av)
 			index++;
 		}
 		signal(SIGUSR2, got_it);
-		ft_atobin(server_pid, '\0');
+		ft_atobin(server_pid, 0);
 	}
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:37 by khabbout          #+#    #+#             */
-/*   Updated: 2023/02/27 13:50:40 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:51:22 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int ac, char **av)
 
 	(void) av;
 	server_pid = getpid();
-	ft_printf("PID: %d\n", server_pid);
+	ft_printf("\033[1;36mPID: %d\n", server_pid);
 	while (ac == 1)
 	{
 		signal(SIGUSR1, ft_bintoa);
