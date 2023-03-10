@@ -6,7 +6,7 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:53:15 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/10 12:44:39 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:20:09 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_bintoa(int sig_num, siginfo_t *info, void *context)
 	static int	index;
 
 	(void)context;
-	(void)info;
 	if (sig_num == SIGUSR1)
 		index |= (0x01 << bit);
 	bit++;
