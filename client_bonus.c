@@ -6,7 +6,7 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:53:37 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/10 12:49:28 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:59:01 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	got_it(int signal)
 {
 	if (signal == SIGUSR2)
-		ft_printf("\033[1;32mSignal has been received and confirmed by server!\n");
+		ft_printf("\033[1;32mSignal has been confirmed by server!\n");
 }
 
 /*convert a char to an int*/
