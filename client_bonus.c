@@ -6,7 +6,7 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:53:37 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/10 12:59:01 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/14 12:58:57 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int	main(int ac, char **av)
 			ft_atobin(server_pid, av[2][index]);
 			index++;
 		}
+		// si on met une pause apres le signal ? 
 		signal(SIGUSR2, got_it);
 		ft_atobin(server_pid, 0);
 	}
