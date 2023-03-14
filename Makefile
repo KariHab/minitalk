@@ -21,7 +21,7 @@ PRINTF_DIR = ft_printf/
 CC =  gcc 
 FLAGS = -Wall -Wextra -Werror 
 RM = rm -f 
-INCLUDES = -I$(PRINTF_DIR)
+#INCLUDES = -I$(PRINTF_DIR) + enlever les includes dans gcc 
 
 
 all: $(SERVER_NAME) $(CLIENT_NAME)
@@ -29,17 +29,17 @@ all: $(SERVER_NAME) $(CLIENT_NAME)
 
 #pour faire les compilations des mes server + clients
 $(CLIENT_NAME): $(CLIENT_OBJS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(PRINTF_DIR)*.c $(CLIENT_OBJS) -o $(CLIENT_NAME)
+	$(CC) $(CFLAGS) $(PRINTF_DIR)*.c $(CLIENT_OBJS) -o $(CLIENT_NAME)
 
 $(SERVER_NAME): $(SERVER_OBJS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(PRINTF_DIR)*.c $(SERVER_OBJS) -o $(SERVER_NAME)
+	$(CC) $(CFLAGS) $(PRINTF_DIR)*.c $(SERVER_OBJS) -o $(SERVER_NAME)
 	
 #pour les regles du bonus
 bonus : $(BONUS_NAMEC) $(BONUS_NAMES)
 $(BONUS_NAMEC) : $(BONUSC_OBJ)
-	$(CC) $(CFLAGS) $(INCLUDES) $(PRINTF_DIR)*.c $(BONUSC_OBJ) -o $(BONUS_NAMEC)
+	$(CC) $(CFLAGS) $(PRINTF_DIR)*.c $(BONUSC_OBJ) -o $(BONUS_NAMEC)
 $(BONUS_NAMES) : $(BONUSS_OBJ)
-	$(CC) $(CFLAGS) $(INCLUDES) $(PRINTF_DIR)*.c $(BONUSS_OBJ) -o $(BONUS_NAMES)
+	$(CC) $(CFLAGS) $(PRINTF_DIR)*.c $(BONUSS_OBJ) -o $(BONUS_NAMES)
 
 # Pour supprimer les .o qu' on a genere
 clean:
