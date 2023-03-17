@@ -6,25 +6,40 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:37 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/10 12:51:22 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/17 14:47:23 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+void	stock_str(char letter)
+{
+	char *str;
+
+	str = malloc(ft_strlen(str) * sizeof(char));
+	str[ft_strlen(str)] = letter;
+	if(letter == '\0')
+		ft_printf("%s", str);
+}
 void	ft_bintoa(int sig_num)
 {
 	static int	bit;
-	static int	index;
+	static int	letter;
+	char		*str;
+	int index_str;
+	int len;
 
+	index_str = 0;
 	if (sig_num == SIGUSR1)
-		index |= (0x01 << bit);
+		letter |= (0x01 << bit);
 	bit++;
 	if (bit == 8)
 	{
-		ft_printf("%c", index);
+		if(letter == 0)
+			stock_str('\0');
+		stock_str(letter);
 		bit = 0;
-		index = 0;
+		letter = 0;
 	}
 }
 

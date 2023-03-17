@@ -6,7 +6,7 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:29 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/09 15:26:04 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/17 14:24:54 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	main(int ac, char **av)
 	int	server_pid;
 	int	index;
 
+
 	index = 0;
 	if (ac == 3)
 	{
@@ -72,6 +73,8 @@ int	main(int ac, char **av)
 			ft_atobin(server_pid, av[2][index]);
 			index++;
 		}
+		if(av[2][index] == '\0')
+			ft_atobin(server_pid, 0);
 	}
 	else
 	{
