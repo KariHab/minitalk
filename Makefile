@@ -4,6 +4,7 @@ CLIENT_NAME = client
 BONUS_NAMEC = client_bonus
 BONUS_NAMES = server_bonus
 
+# Src and obj of each program
 SERVER_SRCS = server.c
 SERVER_OBJS = $(SERVER_SRCS:.c=.o)
 BONUSS_SRCS = server_bonus.c
@@ -15,44 +16,44 @@ BONUSC_SRCS = client_bonus.c
 BONUSC_OBJ = $(BONUSC_SRCS:.c=.o)
 
 PRINTF_DIR = ft_printf/
+PRINTF_SRCS = $(PRINTF_DIR)*.c
+PRINTF_OBJ = $(PRINTF_SRCS: .c=.o)
 
 
-#compiler && flags
+# compiler && flags
 CC =  gcc 
 FLAGS = -Wall -Wextra -Werror 
 RM = rm -f 
-#INCLUDES = -I$(PRINTF_DIR) + enlever les includes dans gcc 
-
 
 all: $(SERVER_NAME) $(CLIENT_NAME)
 
+#compile files with server and client names
+$(CLIENT_NAME): $(CLIENT_OBJS) 
+	@$(CC) $(CFLAGS) $(PRINTF_OBJ) $(CLIENT_OBJS) -o $(CLIENT_NAME)
 
-#pour faire les compilations des mes server + clients
-$(CLIENT_NAME): $(CLIENT_OBJS)
-	$(CC) $(CFLAGS) $(PRINTF_DIR)*.c $(CLIENT_OBJS) -o $(CLIENT_NAME)
+$(SERVER_NAME): $(SERVER_OBJS) 
+	@$(CC) $(CFLAGS) $(PRINTF_OBJ) $(SERVER_OBJS) -o $(SERVER_NAME)
 
-$(SERVER_NAME): $(SERVER_OBJS)
-	$(CC) $(CFLAGS) $(PRINTF_DIR)*.c $(SERVER_OBJS) -o $(SERVER_NAME)
-	
-#pour les regles du bonus
+
+#rules for bonus
 bonus : $(BONUS_NAMEC) $(BONUS_NAMES)
 $(BONUS_NAMEC) : $(BONUSC_OBJ)
-	$(CC) $(CFLAGS) $(PRINTF_DIR)*.c $(BONUSC_OBJ) -o $(BONUS_NAMEC)
+	@$(CC) $(CFLAGS) $(PRINTF_OBJ) $(BONUSC_OBJ) -o $(BONUS_NAMEC)
 $(BONUS_NAMES) : $(BONUSS_OBJ)
-	$(CC) $(CFLAGS) $(PRINTF_DIR)*.c $(BONUSS_OBJ) -o $(BONUS_NAMES)
+	@$(CC) $(CFLAGS) $(PRINTF_OBJ) $(BONUSS_OBJ) -o $(BONUS_NAMES)
 
-# Pour supprimer les .o qu' on a genere
+
 clean:
 	$(RM) $(SERVER_OBJS) $(CLIENT_OBJS)
 	$(RM) $(PRINTF_DIR)*.o 
 	$(RM) $(BONUSS_OBJ)
 	$(RM) $(BONUSC_OBJ)
 	
-# on clean tout donc .o et les exe
+
 fclean: clean
 	$(RM) $(SERVER_NAME) $(CLIENT_NAME)
-#$(RM) $(PRINTF_DIR)$(PRINTF) 
 	$(RM) $(BONUS_NAMEC) $(BONUS_NAMES)
+
  
 
 re: fclean all
