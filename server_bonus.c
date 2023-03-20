@@ -6,28 +6,58 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:53:15 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/10 13:20:09 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/20 12:20:56 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
+char	*make_str(char *str, char c)
+{
+	int		index;
+	int		str_len;
+	char	*new_str;
+
+	index = 0;
+	if (!str)
+	{
+		new_str = ft_calloc(sizeof(char), 2);
+		new_str[0] = c;
+		free(str);
+		return (new_str);
+	}
+	str_len = ft_strlen(str);
+	new_str = ft_calloc(sizeof(char), (str_len + 2));
+	while (str[index])
+	{
+		new_str[index] = str[index];
+		index++;
+	}
+	new_str[index] = c;
+	free(str);
+	return (new_str);
+}
+
 void	ft_bintoa(int sig_num, siginfo_t *info, void *context)
 {
-	static int	bit;
-	static int	index;
+	static int				bit;
+	static unsigned char	letter;
+	static char				*str;
 
 	(void)context;
 	if (sig_num == SIGUSR1)
-		index |= (0x01 << bit);
+		letter |= (0x01 << bit);
 	bit++;
 	if (bit == 8)
 	{
-		if (index == 0)
+		str = make_str(str, letter);
+		if (letter == '\0')
+		{
 			kill(info->si_pid, SIGUSR2);
-		ft_printf("%c", index);
+			ft_printf("%s", str);
+		}
 		bit = 0;
-		index = 0;
+		letter = 0;
 	}
 }
 

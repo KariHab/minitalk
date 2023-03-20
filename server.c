@@ -6,7 +6,7 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:37 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/20 11:16:52 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/20 12:21:15 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*make_str(char *str, char c)
 {
-	int index;
-	int str_len;
-	char *new_str;
+	int		index;
+	int		str_len;
+	char	*new_str;
 
 	index = 0;
 	if (!str)
@@ -37,11 +37,12 @@ char	*make_str(char *str, char c)
 	free(str);
 	return (new_str);
 }
+
 static void	ft_bintoa(int sig_num)
 {
-	static int	bit;
+	static int				bit;
 	static unsigned char	letter;
-	static char *str;
+	static char				*str;
 
 	if (sig_num == SIGUSR1)
 		letter |= (0x01 << bit);
