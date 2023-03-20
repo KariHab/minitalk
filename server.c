@@ -6,40 +6,53 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:37 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/17 14:47:23 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/20 11:16:52 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	stock_str(char letter)
+char	*make_str(char *str, char c)
 {
-	char *str;
+	int index;
+	int str_len;
+	char *new_str;
 
-	str = malloc(ft_strlen(str) * sizeof(char));
-	str[ft_strlen(str)] = letter;
-	if(letter == '\0')
-		ft_printf("%s", str);
+	index = 0;
+	if (!str)
+	{
+		new_str = ft_calloc(sizeof(char), 2);
+		new_str[0] = c;
+		free(str);
+		return (new_str);
+	}
+	str_len = ft_strlen(str);
+	new_str = ft_calloc(sizeof(char), (str_len + 2));
+	while (str[index])
+	{
+		new_str[index] = str[index];
+		index++;
+	}
+	new_str[index] = c;
+	free(str);
+	return (new_str);
 }
-void	ft_bintoa(int sig_num)
+static void	ft_bintoa(int sig_num)
 {
 	static int	bit;
-	static int	letter;
-	char		*str;
-	int index_str;
-	int len;
+	static unsigned char	letter;
+	static char *str;
 
-	index_str = 0;
 	if (sig_num == SIGUSR1)
 		letter |= (0x01 << bit);
-	bit++;
+	bit ++;
 	if (bit == 8)
 	{
-		if(letter == 0)
-			stock_str('\0');
-		stock_str(letter);
-		bit = 0;
+		str = make_str(str, letter);
+		if (letter == '\0')
+			ft_printf("%s", str);
 		letter = 0;
+		bit = 0;
 	}
 }
 

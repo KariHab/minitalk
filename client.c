@@ -6,7 +6,7 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:29 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/17 14:24:54 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/20 10:59:13 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_atoi(const char *str)
 	return (result * sign);
 }
 
-void	ft_atobin(int pid, char c)
+static void	ft_atobin(int pid, char c)
 {
 	int	bit;
 
@@ -74,7 +74,7 @@ int	main(int ac, char **av)
 			index++;
 		}
 		if(av[2][index] == '\0')
-			ft_atobin(server_pid, 0);
+			ft_atobin(server_pid, '\0');
 	}
 	else
 	{
