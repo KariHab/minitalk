@@ -6,7 +6,7 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:29 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/21 10:01:57 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:57:59 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,20 @@ void	ft_atobin(int pid, char c)
 int	main(int ac, char **av)
 {
 	int	server_pid;
-	int index;
+	int	index;
 
 	index = 0;
 	if (ac == 3)
 	{
 		server_pid = ft_atoi(av[1]);
-		if(!av[2])
+		if (!av[2])
 			return (1);
-		while(av[2][index])
+		while (av[2][index])
 		{
 			ft_atobin(server_pid, av[2][index]);
 			index++;
 		}
-		if(av[2][index] == '\0')
+		if (av[2][index] == '\0')
 			ft_atobin(server_pid, '\0');
 	}
 	else
