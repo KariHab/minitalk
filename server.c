@@ -6,7 +6,7 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:37 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/21 14:11:28 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/21 21:33:12 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,15 @@ char	*join_char_to_str(char *str, char letter)
 	new_str = ft_calloc(sizeof(char), letter_count + 1);
 	if (!new_str)
 		return (NULL);
-	while (letter_count)
+	if (str)
 	{
-		new_str[index] = letter;
-		index++;
-		letter_count--;
+		while (str[index])
+		{
+			new_str[index] = str[index];
+			index++;
+		}
 	}
+	new_str[index] = letter;
 	ft_printf("%s", new_str);
 	return (new_str);
 }
@@ -46,6 +49,11 @@ void	ft_bintoa(int sig_num)
 	if (bit == 8)
 	{
 		str = join_char_to_str(str, letter);
+		if (letter == 0)
+		{
+			ft_printf("%s", str);
+			free(str);
+		}
 		letter = 0;
 		bit = 0;
 	}
