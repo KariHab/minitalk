@@ -6,36 +6,61 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:37 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/21 21:33:12 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:57:57 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+//antoine 
 char	*join_char_to_str(char *str, char letter)
 {
-	size_t			index;
-	static char		*new_str;
-	int				letter_count;
+	size_t	index;
+	char	*new_str;
+	int		letter_count;
 
 	index = 0;
-	if (letter)
-		letter_count++;
-	new_str = ft_calloc(sizeof(char), letter_count + 1);
+	new_str = ft_calloc(sizeof(char), ft_strlen(str) + 2);
 	if (!new_str)
 		return (NULL);
-	if (str)
+	while (str[index])
 	{
-		while (str[index])
-		{
-			new_str[index] = str[index];
-			index++;
-		}
+		new_str[index] = str[index];
+		index++;
 	}
 	new_str[index] = letter;
-	ft_printf("%s", new_str);
+	if (str)
+		free(str);
+	ft_printf("%s\n", new_str);
 	return (new_str);
 }
+
+
+// char	*join_char_to_str(char *str, char letter)
+// {
+// 	size_t			index;
+// 	char			*new_str;
+// 	int				letter_count;
+
+// 	index = 0;
+// 	if (letter)
+// 		letter_count++;
+// 	new_str = ft_calloc(sizeof(char), letter_count + 1);
+// 	if (!new_str)
+// 		return (NULL);
+// 	if (str)
+// 	{
+// 		while (str[index])
+// 		{
+// 			new_str[index] = str[index];
+// 			index++;
+// 		}
+// 	}
+// 	new_str[index] = letter;
+// 	ft_printf("%s", new_str);
+// 	return (new_str);
+// }
+
 
 void	ft_bintoa(int sig_num)
 {
@@ -43,17 +68,16 @@ void	ft_bintoa(int sig_num)
 	static char	letter;
 	static char	*str;
 
+	ft_printf("ici\n");
 	if (sig_num == SIGUSR1)
 		letter |= (0x01 << bit);
 	bit++;
 	if (bit == 8)
 	{
 		str = join_char_to_str(str, letter);
+		ft_printf("ici2\n");
 		if (letter == 0)
-		{
-			ft_printf("%s", str);
-			free(str);
-		}
+			ft_printf("%s\n", str);
 		letter = 0;
 		bit = 0;
 	}
