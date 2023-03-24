@@ -6,13 +6,13 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:37 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/24 11:54:39 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:57:26 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-char	*make_str(char *str, char c)
+char	*make_str(char *str, char letter)
 {
 	int		index;
 	int		str_len;
@@ -22,7 +22,7 @@ char	*make_str(char *str, char c)
 	if (!str)
 	{
 		new_str = ft_calloc(sizeof(char), 2);
-		new_str[0] = c;
+		new_str[0] = letter;
 		free(str);
 		return (new_str);
 	}
@@ -33,7 +33,7 @@ char	*make_str(char *str, char c)
 		new_str[index] = str[index];
 		index++;
 	}
-	new_str[index] = c;
+	new_str[index] = letter;
 	free(str);
 	return (new_str);
 }
