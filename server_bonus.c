@@ -6,7 +6,7 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:53:15 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/20 12:20:56 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/24 11:55:02 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_bintoa(int sig_num, siginfo_t *info, void *context)
 	static int				bit;
 	static unsigned char	letter;
 	static char				*str;
+	char					*tmp;
 
 	(void)context;
 	if (sig_num == SIGUSR1)
@@ -53,8 +54,11 @@ void	ft_bintoa(int sig_num, siginfo_t *info, void *context)
 		str = make_str(str, letter);
 		if (letter == '\0')
 		{
+			tmp = str;
 			kill(info->si_pid, SIGUSR2);
 			ft_printf("%s", str);
+			free(str);
+			str = NULL;
 		}
 		bit = 0;
 		letter = 0;
