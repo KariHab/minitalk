@@ -6,20 +6,18 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:53:37 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/20 11:35:17 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/04/04 16:52:44 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-/*bonus part confirm message*/
 void	got_it(int signal)
 {
 	if (signal == SIGUSR2)
 		ft_printf("\033[1;32mSignal has been confirmed by server!\n");
 }
 
-/*convert a char to an int*/
 int	ft_atoi(const char *str)
 {
 	int	i;

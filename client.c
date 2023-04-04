@@ -6,13 +6,12 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:29 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/24 10:56:22 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/04/04 16:52:21 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-/*convert a char to an int*/
 int	ft_atoi(const char *str)
 {
 	int	i;
