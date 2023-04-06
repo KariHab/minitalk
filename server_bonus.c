@@ -6,34 +6,36 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:53:15 by khabbout          #+#    #+#             */
-/*   Updated: 2023/04/04 16:54:01 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/04/06 10:00:27 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-char	*make_str(char *str, char c)
+char	*make_str(char *str, char letter)
 {
 	int		index;
-	int		str_len;
 	char	*new_str;
 
 	index = 0;
 	if (!str)
 	{
 		new_str = ft_calloc(sizeof(char), 2);
-		new_str[0] = c;
+		if (!new_str)
+			return (0);
+		new_str[0] = letter;
 		free(str);
 		return (new_str);
 	}
-	str_len = ft_strlen(str);
-	new_str = ft_calloc(sizeof(char), (str_len + 2));
+	new_str = ft_calloc(sizeof(char), (ft_strlen(str) + 2));
+	if (!new_str)
+		return (0);
 	while (str[index])
 	{
 		new_str[index] = str[index];
 		index++;
 	}
-	new_str[index] = c;
+	new_str[index] = letter;
 	free(str);
 	return (new_str);
 }

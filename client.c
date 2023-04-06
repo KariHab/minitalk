@@ -6,7 +6,7 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:47:29 by khabbout          #+#    #+#             */
-/*   Updated: 2023/04/04 16:52:21 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/04/06 09:55:40 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_atoi(const char *str)
 	int	sign;
 	int	result;
 
-	if (str == NULL)
+	if (!str)
 		return (0);
 	i = 0;
 	sign = 1;
